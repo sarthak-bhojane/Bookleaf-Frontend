@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "proxy": "http://localhost:4000",
+  "proxy": "bookleaf-backend-ovsmqq2zq-sarthak-bhojanes-projects.vercel.app",
   "scripts": {
     "start": "react-scripts start",
     "start:api": "node --watch server/index.js",

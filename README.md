@@ -67,7 +67,7 @@ npm run serve
 
 For local production testing, start the API with `npm run serve` and serve the generated `build/` directory with a static host.
 
-For production, configure a strong `JWT_SECRET`, `CLIENT_ORIGIN`, and (if using AI) `OPENAI_API_KEY`. A production deployment should use a managed database, secret manager, secure password reset, rate limiting, structured logs, and HTTPS.
+For production, configure a strong `JWT_SECRET`, `CLIENT_ORIGIN` (for example, `https://bookleaf-frontend-nu.vercel.app`), and (if using AI) `OPENAI_API_KEY` in the backend deployment. The API's CORS allowlist includes the production frontend and local CRA origin; add any other frontend origin through `CLIENT_ORIGIN` as a comma-separated list. In Vercel, make the backend deployment publicly accessible by disabling Deployment Protection for the API deployment; a protected deployment redirects browser requests to Vercel SSO before the API can return CORS headers. A production deployment should use a managed database, secret manager, secure password reset, rate limiting, structured logs, and HTTPS.
 
 ## Known limitations
 

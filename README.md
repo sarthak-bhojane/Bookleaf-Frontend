@@ -13,7 +13,7 @@ Copy-Item .env.example .env
 npm run dev
 ```
 
-Create React App serves the UI at `http://localhost:3000`; the API is at `http://localhost:4000/api`. CRA proxies `/api` to Node during development. `npm start` starts only the CRA frontend, while `npm run start:api` starts only the API; `npm run dev` starts both. The first API startup initializes `server/data/store.json`; subsequent startups keep ticket activity in that local file. Remove only that generated file if you intentionally want to restore the original demo seed.
+Create React App serves the UI at `http://localhost:3000`. The frontend calls the deployed API at `https://bookleaf-backend-ovsmqq2zq-sarthak-bhojanes-projects.vercel.app/api` by default; set `REACT_APP_API_URL` before starting/building the frontend to use a different API origin. `npm start` starts only the frontend, `npm run start:api` starts only the local API, and `npm run dev` starts both. The local API is not used by the frontend unless `REACT_APP_API_URL` is set to its origin (for example, `http://localhost:4000`). The first local API startup initializes `server/data/store.json`; subsequent startups keep ticket activity in that local file. Remove only that generated file if you intentionally want to restore the original demo seed.
 
 ### Demo logins
 

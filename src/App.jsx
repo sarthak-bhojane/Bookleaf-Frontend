@@ -3,13 +3,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 const categories = ['Royalty & Payments', 'ISBN & Metadata Issues', 'Printing & Quality', 'Distribution & Availability', 'Book Status & Production Updates', 'General Inquiry'];
 const priorities = ['Critical', 'High', 'Medium', 'Low'];
 const statuses = ['Open', 'In Progress', 'Resolved', 'Closed'];
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://bookleaf-backend-ovsmqq2zq-sarthak-bhojanes-projects.vercel.app';
 const money = value => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value || 0);
 const date = value => value ? new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(value)) : '—';
 const initials = name => name.split(' ').map(word => word[0]).slice(0, 2).join('').toUpperCase();
 
 async function request(path, token, options = {}) {
   const isFormData = typeof FormData !== 'undefined' && options.body instanceof FormData;
-  const response = await fetch(`/api${path}`, {
+  const response = await fetch(`${API_BASE_URL}/api${path}`, {
     ...options,
     headers: {
       ...(options.body && !isFormData ? { 'Content-Type': 'application/json' } : {}),
@@ -27,7 +28,7 @@ async function request(path, token, options = {}) {
 }
 
 async function downloadAttachment(ticketId, attachment, token) {
-  const response = await fetch(`/api/tickets/${ticketId}/attachments/${attachment.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/tickets/${ticketId}/attachments/${attachment.id}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!response.ok) {

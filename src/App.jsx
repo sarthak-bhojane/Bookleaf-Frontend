@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 const categories = ['Royalty & Payments', 'ISBN & Metadata Issues', 'Printing & Quality', 'Distribution & Availability', 'Book Status & Production Updates', 'General Inquiry'];
 const priorities = ['Critical', 'High', 'Medium', 'Low'];
 const statuses = ['Open', 'In Progress', 'Resolved', 'Closed'];
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://bookleaf-backend-5sn5.onrender.com/';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://bookleaf-backend-5sn5.onrender.com';
 const money = value => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value || 0);
 const date = value => value ? new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(value)) : '—';
 const initials = name => name.split(' ').map(word => word[0]).slice(0, 2).join('').toUpperCase();
